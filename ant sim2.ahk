@@ -1,4 +1,6 @@
-﻿#SingleInstance Force
+﻿; test git
+
+#SingleInstance Force
 #NoEnv
 SetWorkingDir %A_ScriptDir%
 SetBatchLines -1
