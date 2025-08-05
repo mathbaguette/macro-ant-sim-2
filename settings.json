@@ -1,0 +1,12 @@
+{
+  "anthillSlots":[
+    "1",
+    "3"
+  ],
+  "defaults":{
+    "antSpeed":103,
+    "moveSpeed":220,
+    "selectedAnthillSlot":3,
+    "selectedField":2
+  }
+}
