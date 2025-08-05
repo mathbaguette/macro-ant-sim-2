@@ -356,7 +356,7 @@ MoveToLeft() {
     sleep (300)
     
     Send("{d down}")
-    Sleep(AdjustTime(510))
+    Sleep(AdjustTime(440))
     if (!isRunning || !isMacroRunning) {
         Send("{d up}")
         return
@@ -2720,25 +2720,32 @@ FarmLoop() {
             break
         }
         
-        ; Vérification de la productivité du backpack (toutes les 10 secondes après le début du pattern)
+        ; Vérification de la productivité du backpack (seulement après au moins un pattern complet)
         static patternStartTime := 0
         static lastBagProgressCheck := 0
+        static patternCompleted := false
         
         ; Marquer le début du pattern si pas encore fait
         if (patternStartTime = 0) {
             patternStartTime := A_TickCount
         }
         
-        ; Vérifier toutes les 10 secondes après le début du pattern
-        if (A_TickCount - patternStartTime > 10000 && A_TickCount - lastBagProgressCheck > 10000) { ; 10 secondes
+        ; Marquer qu'un pattern complet a été fait (après les 12 étapes)
+        if (!patternCompleted && A_TickCount - patternStartTime > 60000) { ; Après environ 1 minute (temps d'un pattern complet)
+            patternCompleted := true
+            UpdateStatus("Premier pattern complet terminé - Activation de la détection de progression")
+        }
+        
+        ; Vérifier seulement après qu'au moins un pattern complet soit fait
+        if (patternCompleted && A_TickCount - lastBagProgressCheck > 15000) { ; 15 secondes entre chaque vérification
             try {
                 ; Vérifier le début de la barre du backpack (même position que la détection vide)
                 bagProgressColor := PixelGetColor(1619, 17, "RGB")
                 
                 ; Si la couleur du début de la barre est vide ET qu'on a déjà farmé un peu
                 ; On attend plus longtemps avant de considérer qu'il n'y a pas de progression
-                if (bagProgressColor = 0x282828 && A_TickCount - patternStartTime > 30000) { ; 30 secondes
-                    UpdateStatus("Backpack ne progresse pas après 30s - Retour au début du cycle")
+                if (bagProgressColor = 0x282828 && A_TickCount - patternStartTime > 120000) { ; 2 minutes après le début
+                    UpdateStatus("Backpack ne progresse pas après 2 minutes - Retour au début du cycle")
                     ResetCharacter()
                     Sleep(2000)
                     if (!DetectCameraPosition()) {
