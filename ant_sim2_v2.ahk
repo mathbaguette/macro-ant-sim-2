@@ -347,7 +347,14 @@ MoveToRight() {
 MoveToLeft() {
     UpdateStatus("Moving left...")
     Send("{q down}")
-    Sleep(AdjustTime(170))
+    Sleep(AdjustTime(680))
+    if (!isRunning || !isMacroRunning) {
+        Send("{q up}")
+        return
+    }
+    Send("{q up}")
+        Send("{q down}")
+    Sleep(AdjustTime(340))
     if (!isRunning || !isMacroRunning) {
         Send("{q up}")
         return
