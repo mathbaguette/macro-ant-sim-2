@@ -333,6 +333,7 @@ MoveToRight() {
         return
     }
     Send("{z up}")
+    Sleep(50) ; Petit délai pour RDP
     Send("{d down}")
     Sleep(AdjustTime(4500))
     if (!isRunning || !isMacroRunning) {
@@ -340,6 +341,7 @@ MoveToRight() {
         return
     }
     Send("{d up}")
+    Sleep(50) ; Petit délai pour RDP
     UpdateStatus("Movement completed")
 }
 
@@ -362,6 +364,7 @@ MoveToLeft() {
         return
     }
     Send("{d up}")
+    Sleep(50) ; Petit délai pour RDP
     UpdateStatus("Movement completed")
 }
 
@@ -2304,6 +2307,7 @@ NavigateToField() {
         return
     }
     Send("{q up}")
+    Sleep(50) ; Petit délai pour RDP
     
     Send("{s down}")
     Sleep(AdjustTime(200))
@@ -2312,6 +2316,7 @@ NavigateToField() {
         return
     }
     Send("{s up}")
+    Sleep(50) ; Petit délai pour RDP
     
     Send("{q down}")
     Sleep(AdjustTime(500))
@@ -2320,6 +2325,7 @@ NavigateToField() {
         return
     }
     Send("{q up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{s down}")
     Sleep(AdjustTime(200))
@@ -2328,6 +2334,7 @@ NavigateToField() {
         return
     }
     Send("{s up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{q down}")
     Sleep(AdjustTime(420))
@@ -2336,6 +2343,7 @@ NavigateToField() {
         return
     }
     Send("{q up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{s down}")
     Sleep(AdjustTime(600))
@@ -2344,6 +2352,7 @@ NavigateToField() {
         return
     }
     Send("{s up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{d down}")
     Sleep(AdjustTime(3300))
@@ -2352,6 +2361,7 @@ NavigateToField() {
         return
     }
     Send("{d up}")
+    Sleep(50) ; Petit délai pour RDP
     
     Send("{s down}")
     Sleep(AdjustTime(700))
@@ -2360,6 +2370,7 @@ NavigateToField() {
         return
     }
     Send("{s up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{e}")
     Sleep(4000)
@@ -2371,6 +2382,7 @@ NavigateToField() {
         return
     }
     Send("{d up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{s down}")
     Sleep(AdjustTime(1520))
@@ -2379,6 +2391,7 @@ NavigateToField() {
         return
     }
     Send("{s up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{z down}")
     Sleep(AdjustTime(1730))
@@ -2387,6 +2400,7 @@ NavigateToField() {
         return
     }
     Send("{z up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{d down}")
     Sleep(AdjustTime(2500))
@@ -2395,6 +2409,7 @@ NavigateToField() {
         return
     }
     Send("{d up}")
+    Sleep(50) ; Petit délai pour RDP
 
     ; Délai adaptatif selon l'ant speed
     if (antSpeed > 150) {
@@ -2410,6 +2425,7 @@ NavigateToField() {
         return
     }
     Send("{s up}")
+    Sleep(50) ; Petit délai pour RDP
 
     ; Pattern selon l'ant speed
     if (antSpeed > 150) {
@@ -2427,6 +2443,7 @@ NavigateToField() {
         return
     }
     Send("{s up}")
+    Sleep(50) ; Petit délai pour RDP
     
         Send("{z down}")
         Sleep(AdjustTime(1100))
@@ -2435,6 +2452,7 @@ NavigateToField() {
             return
         }
         Send("{z up}")
+        Sleep(50) ; Petit délai pour RDP
 
         Sleep(1700)
 
@@ -2445,6 +2463,7 @@ NavigateToField() {
             return
         }
         Send("{s up}")
+        Sleep(50) ; Petit délai pour RDP
 
         Sleep(1700)
 
@@ -2455,6 +2474,7 @@ NavigateToField() {
             return
         }
         Send("{z up}")
+        Sleep(50) ; Petit délai pour RDP
 
         Sleep(1700)
 
@@ -2465,6 +2485,7 @@ NavigateToField() {
             return
         }
         Send("{s up}")
+        Sleep(50) ; Petit délai pour RDP
 
         Sleep(1700)
 
@@ -2475,6 +2496,7 @@ NavigateToField() {
             return
         }
         Send("{z up}")
+        Sleep(50) ; Petit délai pour RDP
 
         Sleep(1700)
     }
@@ -2486,6 +2508,7 @@ NavigateToField() {
         return
     }
     Send("{q up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{s down}")
     Sleep(AdjustTime(1100))
@@ -2494,6 +2517,7 @@ NavigateToField() {
         return
     }
     Send("{s up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{q down}")
     Sleep(AdjustTime(300))
@@ -2502,6 +2526,7 @@ NavigateToField() {
         return
     }
     Send("{q up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{z down}")
     Sleep(AdjustTime(1100))
@@ -2510,6 +2535,7 @@ NavigateToField() {
         return
     }
     Send("{z up}")
+    Sleep(50) ; Petit délai pour RDP
     
     Send("{q down}")
     Sleep(AdjustTime(300))
@@ -2518,6 +2544,7 @@ NavigateToField() {
         return
     }
     Send("{q up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{s down}")
     Sleep(AdjustTime(1800))
@@ -2526,6 +2553,7 @@ NavigateToField() {
         return
     }
     Send("{s up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{q down}")
     Sleep(AdjustTime(1800))
@@ -2534,6 +2562,7 @@ NavigateToField() {
         return
     }
     Send("{q up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{d down}")
     Sleep(AdjustTime(1150))
@@ -2542,6 +2571,7 @@ NavigateToField() {
         return
     }
     Send("{d up}")
+    Sleep(50) ; Petit délai pour RDP
 
     Send("{z down}")
     Sleep(AdjustTime(180))
@@ -2550,6 +2580,7 @@ NavigateToField() {
         return
     }
     Send("{z up}")
+    Sleep(50) ; Petit délai pour RDP
 
     UpdateStatus("Arrived at field - Starting pattern")
     Sleep(1000)
@@ -2709,6 +2740,10 @@ FarmLoop() {
     Send("{LButton down}")
     Sleep(500) ; Petite pause pour s'assurer que le clic est bien activé
     
+    ; Réinitialiser le timer dès l'arrivée dans le champ
+    patternStartTime := A_TickCount
+    UpdateStatus("Arrivée dans le champ - Reset du timer de progression")
+    
     if (!isRunning || !isMacroRunning) {
         Send("{LButton up}")
         return
@@ -2720,23 +2755,27 @@ FarmLoop() {
             break
         }
         
-        ; Vérification de la productivité du backpack (seulement après au moins un pattern complet)
+        ; Vérification de la productivité du backpack (seulement après au moins un cycle complet de pattern)
         static patternStartTime := 0
         static lastBagProgressCheck := 0
         static patternCompleted := false
+        static patternCycleCount := 0
         
         ; Marquer le début du pattern si pas encore fait
         if (patternStartTime = 0) {
             patternStartTime := A_TickCount
         }
         
-        ; Marquer qu'un pattern complet a été fait (après les 12 étapes)
-        if (!patternCompleted && A_TickCount - patternStartTime > 60000) { ; Après environ 1 minute (temps d'un pattern complet)
-            patternCompleted := true
-            UpdateStatus("Premier pattern complet terminé - Activation de la détection de progression")
+        ; Compter les cycles de pattern (12 étapes = 1 cycle)
+        ; On compte après chaque étape 12 (fin du cycle)
+        if (patternCycleCount >= 12) {
+            if (!patternCompleted) {
+                patternCompleted := true
+                UpdateStatus("Premier cycle de pattern terminé - Activation de la détection de progression")
+            }
         }
         
-        ; Vérifier seulement après qu'au moins un pattern complet soit fait
+        ; Vérifier seulement après qu'au moins un cycle complet de pattern soit fait
         if (patternCompleted && A_TickCount - lastBagProgressCheck > 15000) { ; 15 secondes entre chaque vérification
             try {
                 ; Vérifier le début de la barre du backpack (même position que la détection vide)
@@ -2744,8 +2783,8 @@ FarmLoop() {
                 
                 ; Si la couleur du début de la barre est vide ET qu'on a déjà farmé un peu
                 ; On attend plus longtemps avant de considérer qu'il n'y a pas de progression
-                if (bagProgressColor = 0x282828 && A_TickCount - patternStartTime > 120000) { ; 2 minutes après le début
-                    UpdateStatus("Backpack ne progresse pas après 2 minutes - Retour au début du cycle")
+                if (bagProgressColor = 0x282828 && A_TickCount - patternStartTime > 20000) { ; 3 minutes après le début
+                    UpdateStatus("Backpack ne progresse pas après 3 minutes - Retour au début du cycle")
                     ResetCharacter()
                     Sleep(2000)
                     if (!DetectCameraPosition()) {
@@ -2766,10 +2805,12 @@ FarmLoop() {
         Send("{d down}")
         Sleep(AdjustTime(800)) ; Distance latérale encore réduite
         Send("{d up}")
+        Sleep(50) ; Petit délai pour RDP
         Send("{z down}")
         Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
         Sleep(AdjustTime(50)) ; Pause très courte entre les étapes
+        patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
         }
@@ -2779,10 +2820,12 @@ FarmLoop() {
         Send("{q down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
+        Sleep(50) ; Petit délai pour RDP
         Send("{z down}")
         Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
         Sleep(AdjustTime(50)) ; Pause très courte entre les étapes
+        patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
         }
@@ -2796,6 +2839,7 @@ FarmLoop() {
         Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
         Sleep(AdjustTime(50)) ; Pause très courte
+        patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
         }
@@ -2809,6 +2853,7 @@ FarmLoop() {
         Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
         Sleep(AdjustTime(50)) ; Pause très courte
+        patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
         }
@@ -2822,6 +2867,7 @@ FarmLoop() {
         Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
         Sleep(AdjustTime(50)) ; Pause très courte
+        patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
         }
@@ -2835,6 +2881,7 @@ FarmLoop() {
         Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
         Sleep(AdjustTime(50)) ; Pause très courte
+        patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
         }
@@ -2847,10 +2894,12 @@ FarmLoop() {
         Send("{d down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
+        Sleep(50) ; Petit délai pour RDP
         Send("{s down}")
         Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
         Sleep(AdjustTime(50)) ; Pause très courte
+        patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
         }
@@ -2860,10 +2909,12 @@ FarmLoop() {
         Send("{q down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
+        Sleep(50) ; Petit délai pour RDP
         Send("{s down}")
         Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
         Sleep(AdjustTime(50)) ; Pause très courte
+        patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
         }
@@ -2873,10 +2924,12 @@ FarmLoop() {
         Send("{d down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
+        Sleep(50) ; Petit délai pour RDP
         Send("{s down}")
         Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
         Sleep(AdjustTime(50)) ; Pause très courte
+        patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
         }
@@ -2886,10 +2939,12 @@ FarmLoop() {
         Send("{q down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
+        Sleep(50) ; Petit délai pour RDP
         Send("{s down}")
         Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
         Sleep(AdjustTime(50)) ; Pause très courte
+        patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
         }
@@ -2899,10 +2954,12 @@ FarmLoop() {
         Send("{d down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
+        Sleep(50) ; Petit délai pour RDP
         Send("{s down}")
         Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
         Sleep(AdjustTime(50)) ; Pause très courte
+        patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
         }
@@ -2912,10 +2969,12 @@ FarmLoop() {
         Send("{q down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
+        Sleep(50) ; Petit délai pour RDP
         Send("{s down}")
         Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
         Sleep(AdjustTime(50)) ; Pause très courte
+        patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
         }
@@ -2977,12 +3036,35 @@ UpdateStatus("Starting conversion process")
 ; Attente que le sac soit vide
 WaitForEmptyBag() {
     global bagEmpty := false
+    static conversionStartTime := 0
     
     UpdateStatus("Waiting for bag to empty...")
+    
+    ; Marquer le moment où la conversion a commencé
+    if (conversionStartTime = 0) {
+        conversionStartTime := A_TickCount
+    }
     
     Loop {
         if (!isRunning || !isMacroRunning || bagEmpty) {
             break
+        }
+        
+        ; Vérifier si 1 minute et 20 secondes se sont écoulées depuis le début de la conversion
+        if (A_TickCount - conversionStartTime > 80000) { ; 1 minute et 20 secondes
+            try {
+                ; Vérifier si le pixel du sac plein est toujours là
+                bagFullColor := PixelGetColor(1807, 10, "RGB")
+                if (bagFullColor = 0xC83838) {
+                    UpdateStatus("Sac toujours plein après 1 minute 20 - Réappuyer sur E")
+                    Send("{e}")
+                    Sleep(2000)
+                    ; Réinitialiser le timer pour la nouvelle tentative
+                    conversionStartTime := A_TickCount
+                }
+            } catch Error as e {
+                ; Ignorer les erreurs de détection
+            }
         }
         
         CheckBagEmpty()
@@ -2994,6 +3076,9 @@ WaitForEmptyBag() {
     UpdateStatus("Bag empty - Waiting 10 seconds for ants to finish...")
     Sleep(10000) ; Attendre 10 secondes pour que les fourmis finissent
     UpdateStatus("Bag empty - Ready for next cycle")
+    
+    ; Réinitialiser le timer pour le prochain cycle
+    conversionStartTime := 0
 }
 
 ; Vérification si le sac est vide
