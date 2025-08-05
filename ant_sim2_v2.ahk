@@ -353,13 +353,15 @@ MoveToLeft() {
         return
     }
     Send("{q up}")
-        Send("{q down}")
-    Sleep(AdjustTime(340))
+    sleep (300)
+    
+    Send("{d down}")
+    Sleep(AdjustTime(510))
     if (!isRunning || !isMacroRunning) {
-        Send("{q up}")
+        Send("{d up}")
         return
     }
-    Send("{q up}")
+    Send("{d up}")
     UpdateStatus("Movement completed")
 }
 

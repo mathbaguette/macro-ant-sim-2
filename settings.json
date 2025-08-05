@@ -4,9 +4,9 @@
     "3"
   ],
   "defaults":{
-    "antSpeed":103,
+    "antSpeed":155,
     "moveSpeed":220,
     "selectedAnthillSlot":3,
-    "selectedField":2
+    "selectedField":1
   }
 }
