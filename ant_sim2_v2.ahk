@@ -19,6 +19,7 @@ global moveSpeed := 220 ; Vitesse de mouvement par défaut (%)
 global antSpeed := 103 ; Vitesse des fourmis par défaut (%)
 global selectedAnthillSlot := 1 ; Slot d'anthill sélectionné par défaut
 global AnthillSlot := "1" ; Slot d'anthill pour l'interface
+global farmTimer := 10 ; Timer de farming en minutes (10 = par défaut)
 
 ; Variables pour la configuration JSON
 global config := {}
@@ -106,52 +107,110 @@ CreateMainInterface() {
     global roseFieldRadio  ; Variable globale pour stocker le contrôle Rose Field
     global cedarFieldRadio  ; Variable globale pour stocker le contrôle Cedar Field
     
-    mainGui.Opt("+AlwaysOnTop +ToolWindow")
-    mainGui.Title := "Ant Sim 2"
+    mainGui.Opt("+AlwaysOnTop +ToolWindow -Caption")
     
-    mainGui.Add("Text", "x10 y10 w200 h20 cBlue", "Field Selection:")
+    ; Style inspiré de la capture avec fond gris clair
+    mainGui.BackColor := "F0F0F0" ; Gris clair comme la capture
     
-    ; Créer les boutons radio avec la sélection depuis la config
+    ; Zone de déplacement de la fenêtre (cliquer sur le titre pour déplacer)
+    mainGui.Add("Text", "x5 y5 w450 h25", "").OnEvent("Click", MoveWindow)
+    
+    ; Titre principal centré avec possibilité de déplacer la fenêtre
+    mainGui.Add("Text", "x5 y5 w510 h25 cBlack Center BackgroundE8E8E8", "Ant Sim 2")
+    mainGui.Add("Text", "x5 y5 w510 h25 cBlack Center", "Ant Sim 2")
+    
+    ; Boutons de contrôle de la fenêtre (style glossy)
+    mainGui.Add("Button", "x460 y8 w12 h12", "").OnEvent("Click", MinimizeWindow)
+    mainGui.Add("Button", "x480 y8 w12 h12", "").OnEvent("Click", CloseWindow)
+    
+    ; Cadrillage fin et discret
+    mainGui.Add("Text", "x5 y30 w510 h1 BackgroundC0C0C0", "") ; Ligne sous le titre
+    mainGui.Add("Text", "x5 y150 w510 h1 BackgroundC0C0C0", "") ; Ligne avant Status
+    
+    ; Lignes verticales plus discrètes
+    mainGui.Add("Text", "x170 y35 h115 w1 BackgroundD0D0D0", "") ; Ligne entre Field et Speed
+    mainGui.Add("Text", "x340 y35 h115 w1 BackgroundD0D0D0", "") ; Ligne entre Speed et Anthill
+    
+    ; Cadre Field Selection avec titre
+    mainGui.Add("Text", "x5 y35 w160 h20 cBlack Center BackgroundE0E0E0", "Field Selection")
+    global fieldDdl := mainGui.Add("DropDownList", "x10 y60 w150 h20", ["Rose Field", "Cedar Field"])
+    
+    ; Sélectionner la valeur par défaut
     if (FieldChoice = 1) {
-        roseFieldRadio := mainGui.Add("Radio", "x10 y35 w100 h20 Checked", "Rose Field")
-        cedarFieldRadio := mainGui.Add("Radio", "x120 y35 w100 h20", "Cedar Field")
+        fieldDdl.Choose(1)
     } else {
-        roseFieldRadio := mainGui.Add("Radio", "x10 y35 w100 h20", "Rose Field")
-        cedarFieldRadio := mainGui.Add("Radio", "x120 y35 w100 h20 Checked", "Cedar Field")
+        fieldDdl.Choose(2)
     }
     
-    mainGui.Add("Text", "x10 y70 w200 h20 cBlue", "Move Speed (%):")
-    moveSpeedEdit := mainGui.Add("Edit", "x10 y95 w80 h20", moveSpeed)
-    mainGui.Add("Text", "x100 y95 w100 h20 cGray", "Default: 220%")
+    ; Cadre Speed Settings avec titre
+    mainGui.Add("Text", "x175 y35 w160 h20 cBlack Center BackgroundE0E0E0", "Speed Settings")
+    mainGui.Add("Text", "x180 y60 w70 h20 cGray", "Move Speed:")
+    moveSpeedEdit := mainGui.Add("Edit", "x180 y80 w60 h18", moveSpeed)
+    mainGui.Add("Text", "x245 y80 w80 h18 cGray", "Default: 220%")
     
-    mainGui.Add("Text", "x10 y125 w200 h20 cBlue", "Ant Speed (%):")
-    antSpeedEdit := mainGui.Add("Edit", "x10 y150 w80 h20", antSpeed)
-    mainGui.Add("Text", "x100 y150 w100 h20 cGray", "Default: 103%")
+    mainGui.Add("Text", "x180 y105 w70 h20 cGray", "Ant Speed:")
+    antSpeedEdit := mainGui.Add("Edit", "x180 y125 w60 h18", antSpeed)
+    mainGui.Add("Text", "x245 y125 w80 h18 cGray", "Default: 103%")
     
-    mainGui.Add("Text", "x10 y175 w200 h20 cBlue", "Anthill Slot:")
+    ; Cadre Anthill Settings avec titre
+    mainGui.Add("Text", "x345 y35 w160 h20 cBlack Center BackgroundE0E0E0", "Anthill Settings")
+    mainGui.Add("Text", "x350 y60 w70 h20 cGray", "Anthill Slot:")
     try {
-        ddl := mainGui.Add("DropDownList", "x10 y200 w60 h50", config.anthillSlots)
+        ddl := mainGui.Add("DropDownList", "x350 y80 w60 h20", config.anthillSlots)
     } catch {
-        ddl := mainGui.Add("DropDownList", "x10 y200 w60 h50", ["1", "3"])
+        ddl := mainGui.Add("DropDownList", "x350 y80 w60 h20", ["1", "3"])
     }
     
-    ; Sélectionner la valeur par défaut (convertir en index)
+    ; Sélectionner la valeur par défaut
     if (selectedAnthillSlot = 1) {
         ddl.Choose(1)
     } else if (selectedAnthillSlot = 3) {
         ddl.Choose(2)
     } else {
-        ddl.Choose(1) ; Par défaut
+        ddl.Choose(1)
     }
     
-    mainGui.Add("Button", "x10 y260 w80 h30", "Start (F1)").OnEvent("Click", StartMacro)
-    mainGui.Add("Button", "x100 y260 w80 h30", "Pause (F2)").OnEvent("Click", PauseMacro)
-    mainGui.Add("Button", "x190 y260 w80 h30", "Stop (F3)").OnEvent("Click", StopMacro)
-    mainGui.Add("Text", "x10 y300 w260 h20 cGray", "Status: Ready")
-    mainGui.Add("Text", "x10 y320 w260 h20 cGray", "Selected Field: Rose Field")
-    mainGui.Add("Text", "x10 y340 w260 h40 cGreen", "Hotkeys:`nF1: Start | F2: Pause | F3: Stop")
+    mainGui.Add("Text", "x350 y105 w70 h20 cGray", "Farm Timer:")
+    global farmTimerEdit := mainGui.Add("Edit", "x350 y125 w60 h18", farmTimer)
+    mainGui.Add("Text", "x415 y125 w80 h18 cGray", "minutes")
     
-    mainGui.Show("x100 y100 w280 h380")
+    ; Cadre Status avec titre
+    mainGui.Add("Text", "x5 y155 w510 h20 cBlack Center BackgroundE0E0E0", "Status")
+    mainGui.Add("Text", "x10 y180 w120 h18 cGray", "Status: Ready")
+    mainGui.Add("Text", "x140 y180 w120 h18 cGray", "Field: Rose Field")
+    mainGui.Add("Text", "x270 y180 w120 h18 cGray", "Speed: 220%")
+    mainGui.Add("Text", "x400 y180 w110 h18 cGray", "Timer: 10min")
+    
+    ; Boutons style Windows XP
+    mainGui.Add("Button", "x10 y205 w80 h24", "Start (F1)").OnEvent("Click", StartMacro)
+    mainGui.Add("Button", "x100 y205 w80 h24", "Pause (F2)").OnEvent("Click", PauseMacro)
+    mainGui.Add("Button", "x190 y205 w80 h24", "Stop (F3)").OnEvent("Click", StopMacro)
+    
+    ; Version en bas à droite
+    mainGui.Add("Text", "x450 y230 w60 h15 cGray Center", "v2.0")
+    
+    mainGui.Show("x100 y100 w520 h250")
+}
+
+; Fonction pour déplacer la fenêtre
+MoveWindow(*) {
+    PostMessage(0xA1, 2) ; WM_NCLBUTTONDOWN, HTCAPTION
+}
+
+; Fonction pour minimiser la fenêtre
+MinimizeWindow(*) {
+    if (mainGui != "") {
+        WinMinimize("Ant Sim 2")
+    }
+}
+
+; Fonction pour fermer la fenêtre
+CloseWindow(*) {
+    if (mainGui != "") {
+        mainGui.Destroy()
+        mainGui := ""
+    }
+    ExitApp
 }
 
 ; Fonction pour démarrer la macro
@@ -184,11 +243,12 @@ StartMacro(*) {
         ; Mettre à jour les autres variables
         moveSpeed := Integer(moveSpeedEdit.Text)
         antSpeed := Integer(antSpeedEdit.Text)
+        farmTimer := Integer(farmTimerEdit.Text)
         
-        ; Récupérer le FieldChoice depuis les boutons radio
-        if (roseFieldRadio.Value = 1) {
+        ; Récupérer le FieldChoice depuis le dropdown
+        if (fieldDdl.Text = "Rose Field") {
             FieldChoice := 1
-        } else if (cedarFieldRadio.Value = 1) {
+        } else if (fieldDdl.Text = "Cedar Field") {
             FieldChoice := 2
         }
         
@@ -2781,6 +2841,14 @@ FarmLoop() {
                 ; Vérifier le début de la barre du backpack (même position que la détection vide)
                 bagProgressColor := PixelGetColor(1619, 17, "RGB")
                 
+                ; Vérifier le Farm Timer (conversion forcée après X minutes)
+                if (farmTimer > 0 && A_TickCount - patternStartTime > (farmTimer * 60000)) { ; X minutes après le début
+                    UpdateStatus("Farm Timer atteint (" . farmTimer . " minutes) - Conversion forcée")
+                    ; Forcer la conversion même si le sac n'est pas plein
+                    global bagFull := true
+                    return true
+                }
+                
                 ; Si la couleur du début de la barre est vide ET qu'on a déjà farmé un peu
                 ; On attend plus longtemps avant de considérer qu'il n'y a pas de progression
                 if (bagProgressColor = 0x282828 && A_TickCount - patternStartTime > 20000) { ; 3 minutes après le début
@@ -3056,9 +3124,21 @@ WaitForEmptyBag() {
                 ; Vérifier si le pixel du sac plein est toujours là
                 bagFullColor := PixelGetColor(1807, 10, "RGB")
                 if (bagFullColor = 0xC83838) {
-                    UpdateStatus("Sac toujours plein après 1 minute 20 - Réappuyer sur E")
+                    UpdateStatus("Sac toujours plein après 1 minute 20 - Refaire le chemin vers la hive")
+                    
+                    ; Reset du personnage pour être sûr d'être au bon endroit
+                    ResetCharacterForConversion()
+                    
+                    ; Navigation vers le slot d'anthill sélectionné
+                    NavigateToAnthillSlot(selectedAnthillSlot)
+                    
+                    Sleep(1000)
+                    
+                    ; Commencer la conversion
+                    UpdateStatus("Starting conversion process")
                     Send("{e}")
                     Sleep(2000)
+                    
                     ; Réinitialiser le timer pour la nouvelle tentative
                     conversionStartTime := A_TickCount
                 }

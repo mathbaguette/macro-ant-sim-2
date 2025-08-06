@@ -6,7 +6,7 @@
   "defaults":{
     "antSpeed":155,
     "moveSpeed":220,
-    "selectedAnthillSlot":1,
+    "selectedAnthillSlot":3,
     "selectedField":1
   }
 }
