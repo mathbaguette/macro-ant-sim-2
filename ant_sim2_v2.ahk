@@ -51,7 +51,7 @@ LoadConfig() {
                 global antSpeed := defaults["antSpeed"]
                 global selectedAnthillSlot := defaults["selectedAnthillSlot"]
                 global FieldChoice := defaults["selectedField"]
-                global selectedField := FieldChoice = 1 ? "Rose Field" : "Cedar Field"
+                global selectedField := FieldChoice = 1 ? "Rose Field" : FieldChoice = 2 ? "Cedar Field" : "Mushroom Field"
                 
 
             } catch Error as e {
@@ -109,23 +109,22 @@ CreateMainInterface() {
     
     mainGui.Opt("+AlwaysOnTop +ToolWindow -Caption")
     
-    ; Style inspiré de la capture avec fond gris clair
+    ; Style inspiré de la capture avec fond gris clair et contour noir
     mainGui.BackColor := "F0F0F0" ; Gris clair comme la capture
     
     ; Zone de déplacement de la fenêtre (cliquer sur le titre pour déplacer)
     mainGui.Add("Text", "x5 y5 w450 h25", "").OnEvent("Click", MoveWindow)
     
     ; Titre principal centré avec possibilité de déplacer la fenêtre
-    mainGui.Add("Text", "x5 y5 w510 h25 cBlack Center BackgroundE8E8E8", "Ant Sim 2")
-    mainGui.Add("Text", "x5 y5 w510 h25 cBlack Center", "Ant Sim 2")
+    mainGui.Add("Text", "x5 y5 w485 h25 cBlack Center BackgroundE8E8E8", "Ant Sim 2")
+    mainGui.Add("Text", "x5 y5 w485 h25 cBlack Center", "Ant Sim 2")
     
-    ; Boutons de contrôle de la fenêtre (style glossy)
-    mainGui.Add("Button", "x460 y8 w12 h12", "").OnEvent("Click", MinimizeWindow)
-    mainGui.Add("Button", "x480 y8 w12 h12", "").OnEvent("Click", CloseWindow)
+    ; Bouton de fermeture (rond)
+    mainGui.Add("Button", "x480 y8 w16 h16 +0x1", "").OnEvent("Click", CloseWindow)
     
     ; Cadrillage fin et discret
-    mainGui.Add("Text", "x5 y30 w510 h1 BackgroundC0C0C0", "") ; Ligne sous le titre
-    mainGui.Add("Text", "x5 y150 w510 h1 BackgroundC0C0C0", "") ; Ligne avant Status
+    mainGui.Add("Text", "x5 y30 w485 h1 BackgroundC0C0C0", "") ; Ligne sous le titre
+    mainGui.Add("Text", "x5 y150 w485 h1 BackgroundC0C0C0", "") ; Ligne avant Status
     
     ; Lignes verticales plus discrètes
     mainGui.Add("Text", "x170 y35 h115 w1 BackgroundD0D0D0", "") ; Ligne entre Field et Speed
@@ -133,17 +132,22 @@ CreateMainInterface() {
     
     ; Cadre Field Selection avec titre
     mainGui.Add("Text", "x5 y35 w160 h20 cBlack Center BackgroundE0E0E0", "Field Selection")
-    global fieldDdl := mainGui.Add("DropDownList", "x10 y60 w150 h20", ["Rose Field", "Cedar Field"])
+    global fieldDdl := mainGui.Add("DropDownList", "x10 y60 w120 h80", ["Rose", "Cedar", "Mushroom"])
+    mainGui.Add("Text", "x135 y60 w25 h20 cGray", "Field")
     
     ; Sélectionner la valeur par défaut
     if (FieldChoice = 1) {
         fieldDdl.Choose(1)
-    } else {
+    } else if (FieldChoice = 2) {
         fieldDdl.Choose(2)
+    } else if (FieldChoice = 3) {
+        fieldDdl.Choose(3)
+    } else {
+        fieldDdl.Choose(1)
     }
     
     ; Cadre Speed Settings avec titre
-    mainGui.Add("Text", "x175 y35 w160 h20 cBlack Center BackgroundE0E0E0", "Speed Settings")
+    mainGui.Add("Text", "x175 y35 w150 h20 cBlack Center BackgroundE0E0E0", "Speed Settings")
     mainGui.Add("Text", "x180 y60 w70 h20 cGray", "Move Speed:")
     moveSpeedEdit := mainGui.Add("Edit", "x180 y80 w60 h18", moveSpeed)
     mainGui.Add("Text", "x245 y80 w80 h18 cGray", "Default: 220%")
@@ -153,12 +157,12 @@ CreateMainInterface() {
     mainGui.Add("Text", "x245 y125 w80 h18 cGray", "Default: 103%")
     
     ; Cadre Anthill Settings avec titre
-    mainGui.Add("Text", "x345 y35 w160 h20 cBlack Center BackgroundE0E0E0", "Anthill Settings")
+    mainGui.Add("Text", "x345 y35 w150 h20 cBlack Center BackgroundE0E0E0", "Anthill Settings")
     mainGui.Add("Text", "x350 y60 w70 h20 cGray", "Anthill Slot:")
     try {
-        ddl := mainGui.Add("DropDownList", "x350 y80 w60 h20", config.anthillSlots)
+        ddl := mainGui.Add("DropDownList", "x350 y80 w60 h80", config.anthillSlots)
     } catch {
-        ddl := mainGui.Add("DropDownList", "x350 y80 w60 h20", ["1", "3"])
+        ddl := mainGui.Add("DropDownList", "x350 y80 w60 h80", ["1", "3"])
     }
     
     ; Sélectionner la valeur par défaut
@@ -175,21 +179,32 @@ CreateMainInterface() {
     mainGui.Add("Text", "x415 y125 w80 h18 cGray", "minutes")
     
     ; Cadre Status avec titre
-    mainGui.Add("Text", "x5 y155 w510 h20 cBlack Center BackgroundE0E0E0", "Status")
+    mainGui.Add("Text", "x5 y155 w485 h20 cBlack Center BackgroundE0E0E0", "Status")
     mainGui.Add("Text", "x10 y180 w120 h18 cGray", "Status: Ready")
     mainGui.Add("Text", "x140 y180 w120 h18 cGray", "Field: Rose Field")
     mainGui.Add("Text", "x270 y180 w120 h18 cGray", "Speed: 220%")
-    mainGui.Add("Text", "x400 y180 w110 h18 cGray", "Timer: 10min")
+    mainGui.Add("Text", "x400 y180 w90 h18 cGray", "Timer: 10min")
     
     ; Boutons style Windows XP
     mainGui.Add("Button", "x10 y205 w80 h24", "Start (F1)").OnEvent("Click", StartMacro)
     mainGui.Add("Button", "x100 y205 w80 h24", "Pause (F2)").OnEvent("Click", PauseMacro)
     mainGui.Add("Button", "x190 y205 w80 h24", "Stop (F3)").OnEvent("Click", StopMacro)
     
-    ; Version en bas à droite
-    mainGui.Add("Text", "x450 y230 w60 h15 cGray Center", "v2.0")
+    ; Version en bas à droite (repositionnée pour éliminer la bande blanche)
+    mainGui.Add("Text", "x430 y215 w60 h15 cGray Center", "v2.0")
     
-    mainGui.Show("x100 y100 w520 h250")
+    ; Afficher l'interface avec une hauteur réduite et un contour noir
+    mainGui.Show("x100 y100 w500 h240")
+    
+    ; Ajouter des bordures noires de 2 pixels autour de l'interface
+    ; Bordure supérieure
+    mainGui.Add("Text", "x0 y0 w500 h2 Background000000", "")
+    ; Bordure gauche
+    mainGui.Add("Text", "x0 y0 w2 h240 Background000000", "")
+    ; Bordure droite
+    mainGui.Add("Text", "x498 y0 w2 h240 Background000000", "")
+    ; Bordure inférieure
+    mainGui.Add("Text", "x0 y238 w500 h2 Background000000", "")
 }
 
 ; Fonction pour déplacer la fenêtre
@@ -197,15 +212,11 @@ MoveWindow(*) {
     PostMessage(0xA1, 2) ; WM_NCLBUTTONDOWN, HTCAPTION
 }
 
-; Fonction pour minimiser la fenêtre
-MinimizeWindow(*) {
-    if (mainGui != "") {
-        WinMinimize("Ant Sim 2")
-    }
-}
+
 
 ; Fonction pour fermer la fenêtre
 CloseWindow(*) {
+    global mainGui
     if (mainGui != "") {
         mainGui.Destroy()
         mainGui := ""
@@ -216,7 +227,7 @@ CloseWindow(*) {
 ; Fonction pour démarrer la macro
 StartMacro(*) {
     global isMacroRunning := true
-    global selectedField := FieldChoice = 1 ? "Rose Field" : "Cedar Field"
+    global selectedField := FieldChoice = 1 ? "Rose Field" : FieldChoice = 2 ? "Cedar Field" : "Mushroom Field"
     global mainGui
     global moveSpeed
     global antSpeed
@@ -246,10 +257,12 @@ StartMacro(*) {
         farmTimer := Integer(farmTimerEdit.Text)
         
         ; Récupérer le FieldChoice depuis le dropdown
-        if (fieldDdl.Text = "Rose Field") {
+        if (fieldDdl.Text = "Rose") {
             FieldChoice := 1
-        } else if (fieldDdl.Text = "Cedar Field") {
+        } else if (fieldDdl.Text = "Cedar") {
             FieldChoice := 2
+        } else if (fieldDdl.Text = "Mushroom") {
+            FieldChoice := 3
         }
         
 
@@ -300,6 +313,8 @@ PauseMacro(*) {
 StopMacro(*) {
     global isMacroRunning := false
     global isRunning := false
+    global mainGui
+    global miniGui
     Send("{z up}")
     Send("{q up}")
     Send("{s up}")
@@ -2360,6 +2375,101 @@ DetectCameraPosition() {
 NavigateToField() {
     UpdateStatus("Navigating to field...")
     
+    ; Vérifier d'abord si c'est le champ de champignons
+    if (FieldChoice = 3) {
+        
+Send("{q down}")
+    Sleep(AdjustTime(500))
+    if (!isRunning || !isMacroRunning) {
+        Send("{q up}")
+        return
+    }
+    Send("{q up}")
+    Sleep(50) ; Petit délai pour RDP
+    
+    Send("{s down}")
+    Sleep(AdjustTime(200))
+    if (!isRunning || !isMacroRunning) {
+        Send("{s up}")
+        return
+    }
+    Send("{s up}")
+    Sleep(50) ; Petit délai pour RDP
+    
+    Send("{q down}")
+    Sleep(AdjustTime(500))
+    if (!isRunning || !isMacroRunning) {
+        Send("{q up}")
+        return
+    }
+    Send("{q up}")
+    Sleep(50) ; Petit délai pour RDP
+
+    Send("{s down}")
+    Sleep(AdjustTime(200))
+    if (!isRunning || !isMacroRunning) {
+        Send("{s up}")
+        return
+    }
+    Send("{s up}")
+    Sleep(50) ; Petit délai pour RDP
+
+    Send("{q down}")
+    Sleep(AdjustTime(420))
+    if (!isRunning || !isMacroRunning) {
+        Send("{q up}")
+        return
+    }
+    Send("{q up}")
+    Sleep(50) ; Petit délai pour RDP
+
+    Send("{s down}")
+    Sleep(AdjustTime(600))
+    if (!isRunning || !isMacroRunning) {
+        Send("{s up}")
+        return
+    }
+    Send("{s up}")
+
+    Send("{q down}")
+    Sleep(AdjustTime(1300))
+    if (!isRunning || !isMacroRunning) {
+        Send("{s up}")
+        return
+    }
+    Send("{q up}")
+
+        Send("{s down}")
+    Sleep(AdjustTime(3300))
+    if (!isRunning || !isMacroRunning) {
+        Send("{s up}")
+        return
+    }
+    Send("{s up}")
+
+        Send("{q down}")
+    Sleep(AdjustTime(450))
+    if (!isRunning || !isMacroRunning) {
+        Send("{s up}")
+        return
+    }
+    Send("{q up}")
+
+        Send("{s down}")
+    Sleep(AdjustTime(4300))
+    if (!isRunning || !isMacroRunning) {
+        Send("{s up}")
+        return
+    }
+    Send("{s up}")
+
+        UpdateStatus("Mushroom field path completed")
+        return
+    }
+    
+    ; Début commun pour Rose Field et Cedar Field (détection caméra + rotation déjà effectuée)
+    ; Commencer par le mouvement de base
+    
     Send("{q down}")
     Sleep(AdjustTime(500))
     if (!isRunning || !isMacroRunning) {
@@ -2414,6 +2524,7 @@ NavigateToField() {
     Send("{s up}")
     Sleep(50) ; Petit délai pour RDP
 
+    ; Chemin original pour Rose Field (FieldChoice = 1) et Cedar Field (FieldChoice = 2)
     Send("{d down}")
     Sleep(AdjustTime(3300))
     if (!isRunning || !isMacroRunning) {
@@ -2596,54 +2707,6 @@ NavigateToField() {
     }
     Send("{z up}")
     Sleep(50) ; Petit délai pour RDP
-    
-    Send("{q down}")
-    Sleep(AdjustTime(300))
-    if (!isRunning || !isMacroRunning) {
-        Send("{q up}")
-        return
-    }
-    Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
-
-    Send("{s down}")
-    Sleep(AdjustTime(1800))
-    if (!isRunning || !isMacroRunning) {
-        Send("{s up}")
-        return
-    }
-    Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
-
-    Send("{q down}")
-    Sleep(AdjustTime(1800))
-    if (!isRunning || !isMacroRunning) {
-        Send("{q up}")
-        return
-    }
-    Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
-
-    Send("{d down}")
-    Sleep(AdjustTime(1150))
-    if (!isRunning || !isMacroRunning) {
-        Send("{d up}")
-        return
-    }
-    Send("{d up}")
-    Sleep(50) ; Petit délai pour RDP
-
-    Send("{z down}")
-    Sleep(AdjustTime(180))
-    if (!isRunning || !isMacroRunning) {
-        Send("{z up}")
-        return
-    }
-    Send("{z up}")
-    Sleep(50) ; Petit délai pour RDP
-
-    UpdateStatus("Arrived at field - Starting pattern")
-    Sleep(1000)
 }
 
 ; Navigation vers le slot d'anthill spécifique
@@ -2784,18 +2847,23 @@ FarmLoop() {
     UpdateStatus("Starting farming pattern")
 
     ; Rotation de caméra avec flèches de droite (plus fiable que la souris)
-    UpdateStatus("Pattern: Camera rotation with arrow keys")
-    
-    ; Rotation progressive avec flèche droite (équivalent à ~15°)
-    Loop 4 {
-        Send("{Right down}")
-        Sleep(50) ; Pression courte pour rotation progressive
-        Send("{Right up}")
-        Sleep(100) ; Pause entre chaque pression
+    ; SAUF pour le champ de champignons (FieldChoice = 3)
+    if (FieldChoice != 3) {
+        UpdateStatus("Pattern: Camera rotation with arrow keys")
+        
+        ; Rotation progressive avec flèche droite (équivalent à ~15°)
+        Loop 4 {
+            Send("{Right down}")
+            Sleep(50) ; Pression courte pour rotation progressive
+            Send("{Right up}")
+            Sleep(100) ; Pause entre chaque pression
+        }
+        
+        Sleep(AdjustTime(300)) ; Pause après rotation
+    } else {
+        UpdateStatus("Mushroom field: Skipping camera rotation")
     }
     
-    Sleep(AdjustTime(300)) ; Pause après rotation
-
     ; Maintenir le clic gauche pour farmer en continu
     Send("{LButton down}")
     Sleep(500) ; Petite pause pour s'assurer que le clic est bien activé
@@ -2814,6 +2882,9 @@ FarmLoop() {
         if (!isRunning || !isMacroRunning || bagFull) {
             break
         }
+        
+        ; Maintenir le clic gauche actif à chaque cycle du pattern
+        Send("{LButton down}")
         
         ; Vérification de la productivité du backpack (seulement après au moins un cycle complet de pattern)
         static patternStartTime := 0
