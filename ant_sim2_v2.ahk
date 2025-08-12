@@ -2957,9 +2957,7 @@ FarmLoop() {
         return
     }
 
-    ; Pattern de farming complexe anti-drift - ÉQUILIBRÉ POUR MUSHROOM FIELD
-    ; Ratio corrigé: 600ms latéral vs 400ms avant/arrière (au lieu de 800ms vs 200ms)
-    ; Cela évite la dérive vers le bas qui causait la sortie du champ
+    ; Pattern de farming complexe anti-drift
     while true {
         if (!isRunning || !isMacroRunning || bagFull) {
             break
@@ -3024,11 +3022,11 @@ FarmLoop() {
         ; Étape 1: Droite + Avance
         UpdateStatus("Pattern: Right + Forward")
         Send("{d down}")
-        Sleep(AdjustTime(600)) ; Distance latérale équilibrée
+        Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
         Sleep(50) ; Petit délai pour RDP
         Send("{z down}")
-        Sleep(AdjustTime(400)) ; Distance vers l'avant équilibrée
+        Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
         Sleep(AdjustTime(50)) ; Pause très courte entre les étapes
         patternCycleCount++
@@ -3039,11 +3037,11 @@ FarmLoop() {
         ; Étape 2: Gauche + Avance
         UpdateStatus("Pattern: Left + Forward")
         Send("{q down}")
-        Sleep(AdjustTime(600)) ; Distance latérale équilibrée
+        Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
         Sleep(50) ; Petit délai pour RDP
         Send("{z down}")
-        Sleep(AdjustTime(400)) ; Distance vers l'avant équilibrée
+        Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
         Sleep(AdjustTime(50)) ; Pause très courte entre les étapes
         patternCycleCount++
@@ -3054,10 +3052,10 @@ FarmLoop() {
         ; Étape 3: Droite + Avance
         UpdateStatus("Pattern: Right + Forward")
         Send("{d down}")
-        Sleep(AdjustTime(600)) ; Distance latérale équilibrée
+        Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
         Send("{z down}")
-        Sleep(AdjustTime(400)) ; Distance vers l'avant équilibrée
+        Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
         Sleep(AdjustTime(50)) ; Pause très courte
         patternCycleCount++
@@ -3068,10 +3066,10 @@ FarmLoop() {
         ; Étape 4: Gauche + Avance
         UpdateStatus("Pattern: Left + Forward")
         Send("{q down}")
-        Sleep(AdjustTime(600)) ; Distance latérale équilibrée
+        Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
         Send("{z down}")
-        Sleep(AdjustTime(400)) ; Distance vers l'avant équilibrée
+        Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
         Sleep(AdjustTime(50)) ; Pause très courte
         patternCycleCount++
@@ -3082,10 +3080,10 @@ FarmLoop() {
         ; Étape 5: Droite + Avance
         UpdateStatus("Pattern: Right + Forward")
         Send("{d down}")
-        Sleep(AdjustTime(600)) ; Distance latérale équilibrée
+        Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
         Send("{z down}")
-        Sleep(AdjustTime(400)) ; Distance vers l'avant équilibrée
+        Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
         Sleep(AdjustTime(50)) ; Pause très courte
         patternCycleCount++
@@ -3096,10 +3094,10 @@ FarmLoop() {
         ; Étape 6: Gauche + Avance
         UpdateStatus("Pattern: Left + Forward")
         Send("{q down}")
-        Sleep(AdjustTime(600)) ; Distance latérale équilibrée
+        Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
         Send("{z down}")
-        Sleep(AdjustTime(400)) ; Distance vers l'avant équilibrée
+        Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
         Sleep(AdjustTime(50)) ; Pause très courte
         patternCycleCount++
@@ -3113,11 +3111,11 @@ FarmLoop() {
         ; Étape 7: Droite + Recul (inverse de Gauche + Avance)
         UpdateStatus("Pattern: Right + Backward")
         Send("{d down}")
-        Sleep(AdjustTime(600)) ; Distance latérale équilibrée
+        Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
         Sleep(50) ; Petit délai pour RDP
         Send("{s down}")
-        Sleep(AdjustTime(400)) ; Distance vers l'arrière équilibrée
+        Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
         Sleep(AdjustTime(50)) ; Pause très courte
         patternCycleCount++
@@ -3128,11 +3126,11 @@ FarmLoop() {
         ; Étape 8: Gauche + Recul (inverse de Droite + Avance)
         UpdateStatus("Pattern: Left + Backward")
         Send("{q down}")
-        Sleep(AdjustTime(600)) ; Distance latérale équilibrée
+        Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
         Sleep(50) ; Petit délai pour RDP
         Send("{s down}")
-        Sleep(AdjustTime(400)) ; Distance vers l'arrière équilibrée
+        Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
         Sleep(AdjustTime(50)) ; Pause très courte
         patternCycleCount++
@@ -3143,11 +3141,11 @@ FarmLoop() {
         ; Étape 9: Droite + Recul (inverse de Gauche + Avance)
         UpdateStatus("Pattern: Right + Backward")
         Send("{d down}")
-        Sleep(AdjustTime(600)) ; Distance latérale équilibrée
+        Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
         Sleep(50) ; Petit délai pour RDP
         Send("{s down}")
-        Sleep(AdjustTime(400)) ; Distance vers l'arrière équilibrée
+        Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
         Sleep(AdjustTime(50)) ; Pause très courte
         patternCycleCount++
@@ -3158,11 +3156,11 @@ FarmLoop() {
         ; Étape 10: Gauche + Recul (inverse de Droite + Avance)
         UpdateStatus("Pattern: Left + Backward")
         Send("{q down}")
-        Sleep(AdjustTime(600)) ; Distance latérale équilibrée
+        Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
         Sleep(50) ; Petit délai pour RDP
         Send("{s down}")
-        Sleep(AdjustTime(400)) ; Distance vers l'arrière équilibrée
+        Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
         Sleep(AdjustTime(50)) ; Pause très courte
         patternCycleCount++
@@ -3173,11 +3171,11 @@ FarmLoop() {
         ; Étape 11: Droite + Recul (inverse de Gauche + Avance)
         UpdateStatus("Pattern: Right + Backward")
         Send("{d down}")
-        Sleep(AdjustTime(600)) ; Distance latérale équilibrée
+        Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
         Sleep(50) ; Petit délai pour RDP
         Send("{s down}")
-        Sleep(AdjustTime(400)) ; Distance vers l'arrière équilibrée
+        Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
         Sleep(AdjustTime(50)) ; Pause très courte
         patternCycleCount++
@@ -3188,11 +3186,11 @@ FarmLoop() {
         ; Étape 12: Gauche + Recul (inverse de Droite + Avance)
         UpdateStatus("Pattern: Left + Backward")
         Send("{q down}")
-        Sleep(AdjustTime(600)) ; Distance latérale équilibrée
+        Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
         Sleep(50) ; Petit délai pour RDP
         Send("{s down}")
-        Sleep(AdjustTime(400)) ; Distance vers l'arrière équilibrée
+        Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
         Sleep(AdjustTime(50)) ; Pause très courte
         patternCycleCount++
