@@ -414,7 +414,7 @@ MoveToRight() {
         return
     }
     Send("{z up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
     Send("{d down}")
     Sleep(AdjustTime(4500))
     if (!isRunning || !isMacroRunning) {
@@ -422,7 +422,7 @@ MoveToRight() {
         return
     }
     Send("{d up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
     UpdateStatus("Movement completed")
 }
 
@@ -436,6 +436,7 @@ MoveToLeft() {
         return
     }
     Send("{q up}")
+    Sleep(75) ; Délai RDP augmenté
     sleep (300)
     
     Send("{d down}")
@@ -445,7 +446,7 @@ MoveToLeft() {
         return
     }
     Send("{d up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
     UpdateStatus("Movement completed")
 }
 
@@ -2391,7 +2392,7 @@ Send("{q down}")
         return
     }
     Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
     
     Send("{s down}")
     Sleep(AdjustTime(200))
@@ -2400,7 +2401,7 @@ Send("{q down}")
         return
     }
     Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
     
     Send("{q down}")
     Sleep(AdjustTime(500))
@@ -2409,7 +2410,7 @@ Send("{q down}")
         return
     }
     Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{s down}")
     Sleep(AdjustTime(200))
@@ -2418,7 +2419,7 @@ Send("{q down}")
         return
     }
     Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{q down}")
     Sleep(AdjustTime(420))
@@ -2427,7 +2428,7 @@ Send("{q down}")
         return
     }
     Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{s down}")
     Sleep(AdjustTime(600))
@@ -2436,14 +2437,16 @@ Send("{q down}")
         return
     }
     Send("{s up}")
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{q down}")
     Sleep(AdjustTime(1300))
     if (!isRunning || !isMacroRunning) {
-        Send("{s up}")
+        Send("{q up}")
         return
     }
     Send("{q up}")
+    Sleep(75) ; Délai RDP augmenté
 
         Send("{s down}")
     Sleep(AdjustTime(3300))
@@ -2452,14 +2455,16 @@ Send("{q down}")
         return
     }
     Send("{s up}")
+    Sleep(75) ; Délai RDP augmenté
 
         Send("{q down}")
     Sleep(AdjustTime(450))
     if (!isRunning || !isMacroRunning) {
-        Send("{s up}")
+        Send("{q up}")
         return
     }
     Send("{q up}")
+    Sleep(75) ; Délai RDP augmenté
 
         Send("{s down}")
     Sleep(AdjustTime(4300))
@@ -2468,6 +2473,7 @@ Send("{q down}")
         return
     }
     Send("{s up}")
+    Sleep(75) ; Délai RDP augmenté
 
         UpdateStatus("Mushroom field path completed")
         return
@@ -2483,7 +2489,7 @@ Send("{q down}")
         return
     }
     Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
     
     Send("{s down}")
     Sleep(AdjustTime(200))
@@ -2492,7 +2498,7 @@ Send("{q down}")
         return
     }
     Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
     
     Send("{q down}")
     Sleep(AdjustTime(500))
@@ -2501,7 +2507,7 @@ Send("{q down}")
         return
     }
     Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{s down}")
     Sleep(AdjustTime(200))
@@ -2510,7 +2516,7 @@ Send("{q down}")
         return
     }
     Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{q down}")
     Sleep(AdjustTime(420))
@@ -2519,7 +2525,7 @@ Send("{q down}")
         return
     }
     Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{s down}")
     Sleep(AdjustTime(600))
@@ -2528,7 +2534,7 @@ Send("{q down}")
         return
     }
     Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     ; Chemin original pour Rose Field (FieldChoice = 1) et Cedar Field (FieldChoice = 2)
     Send("{d down}")
@@ -2538,7 +2544,7 @@ Send("{q down}")
         return
     }
     Send("{d up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
     
     Send("{s down}")
     Sleep(AdjustTime(700))
@@ -2547,9 +2553,10 @@ Send("{q down}")
         return
     }
     Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{e}")
+    Sleep(75) ; Délai RDP augmenté
     Sleep(4000)
 
     Send("{d down}")
@@ -2559,7 +2566,7 @@ Send("{q down}")
         return
     }
     Send("{d up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{s down}")
     Sleep(AdjustTime(1520))
@@ -2568,7 +2575,7 @@ Send("{q down}")
         return
     }
     Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{z down}")
     Sleep(AdjustTime(1730))
@@ -2577,7 +2584,7 @@ Send("{q down}")
         return
     }
     Send("{z up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{d down}")
     Sleep(AdjustTime(2500))
@@ -2586,7 +2593,7 @@ Send("{q down}")
         return
     }
     Send("{d up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     ; Délai adaptatif selon l'ant speed
     if (antSpeed > 150) {
@@ -2602,7 +2609,7 @@ Send("{q down}")
         return
     }
     Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     ; Pattern selon l'ant speed
     if (antSpeed > 150) {
@@ -2620,7 +2627,7 @@ Send("{q down}")
         return
     }
     Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
     
         Send("{z down}")
         Sleep(AdjustTime(1100))
@@ -2629,7 +2636,7 @@ Send("{q down}")
             return
         }
         Send("{z up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
 
         Sleep(1700)
 
@@ -2640,7 +2647,7 @@ Send("{q down}")
             return
         }
         Send("{s up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
 
         Sleep(1700)
 
@@ -2651,7 +2658,7 @@ Send("{q down}")
             return
         }
         Send("{z up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
 
         Sleep(1700)
 
@@ -2662,7 +2669,7 @@ Send("{q down}")
             return
         }
         Send("{s up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
 
         Sleep(1700)
 
@@ -2673,7 +2680,7 @@ Send("{q down}")
             return
         }
         Send("{z up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
 
         Sleep(1700)
     }
@@ -2685,7 +2692,7 @@ Send("{q down}")
         return
     }
     Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{s down}")
     Sleep(AdjustTime(1100))
@@ -2694,7 +2701,7 @@ Send("{q down}")
         return
     }
     Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{q down}")
     Sleep(AdjustTime(300))
@@ -2703,7 +2710,7 @@ Send("{q down}")
         return
     }
     Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{z down}")
     Sleep(AdjustTime(1100))
@@ -2712,7 +2719,7 @@ Send("{q down}")
         return
     }
     Send("{z up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
         Send("{q down}")
     Sleep(AdjustTime(300))
@@ -2721,7 +2728,7 @@ Send("{q down}")
         return
     }
     Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{s down}")
     Sleep(AdjustTime(1100))
@@ -2730,7 +2737,7 @@ Send("{q down}")
         return
     }
     Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{q down}")
     Sleep(AdjustTime(300))
@@ -2739,7 +2746,7 @@ Send("{q down}")
         return
     }
     Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{z down}")
     Sleep(AdjustTime(1100))
@@ -2748,7 +2755,7 @@ Send("{q down}")
         return
     }
     Send("{z up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{q down}")
     Sleep(AdjustTime(1100))
@@ -2757,16 +2764,16 @@ Send("{q down}")
     return
     }
     Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{s down}")
     Sleep(AdjustTime(2500))
-    if (!isRunning || !isMacroRunning) {
+          if (!isRunning || !isMacroRunning) {
+      Send("{s up}")
+      return
+      }
     Send("{s up}")
-    return
-    }
-    Send("{s up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{q down}")
     Sleep(AdjustTime(1500))
@@ -2775,7 +2782,7 @@ Send("{q down}")
     return
     }
     Send("{q up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
     Send("{d down}")
     Sleep(AdjustTime(1600))
@@ -2784,7 +2791,7 @@ Send("{q down}")
     return
     }
     Send("{d up}")
-    Sleep(50) ; Petit délai pour RDP
+    Sleep(75) ; Délai RDP augmenté
 
 
 }
@@ -2807,6 +2814,7 @@ NavigateToAnthillSlot(slotNumber) {
                 return
             }
             Send("{z up}")
+            Sleep(75) ; Délai RDP augmenté
             Send("{d down}")
             Sleep(AdjustTime(4500))
             if (!isRunning || !isMacroRunning) {
@@ -2814,14 +2822,17 @@ NavigateToAnthillSlot(slotNumber) {
                 return
             }
             Send("{d up}")
+            Sleep(75) ; Délai RDP augmenté
             
             ; Final diagonal movement
             UpdateStatus("Slot 1 - Final diagonal movement")
             Send("{q down}")
+            Sleep(75) ; Délai RDP augmenté
             Send("{z down}")
             Sleep(AdjustTime(500))
             Send("{q up}")
             Send("{z up}")
+            Sleep(75) ; Délai RDP augmenté
             
         case 2:
             ; Slot 2 - Chemin alternatif
@@ -2829,9 +2840,11 @@ NavigateToAnthillSlot(slotNumber) {
             Send("{q down}")
             Sleep(AdjustTime(300))
             Send("{q up}")
+            Sleep(75) ; Délai RDP augmenté
             Send("{z down}")
             Sleep(AdjustTime(400))
             Send("{z up}")
+            Sleep(75) ; Délai RDP augmenté
             
         case 3:
             ; Slot 3 - Chemin simple : avancer droit puis gauche (pas de chemin de base)
@@ -2839,26 +2852,36 @@ NavigateToAnthillSlot(slotNumber) {
            Send("{z down}")
            Sleep(AdjustTime(2400)) ; Avancer tout droit pendant 2400ms
             Send("{z up}")
+            Sleep(75) ; Délai RDP augmenté
             sleep (200)
             Send("{q down}")
             Sleep(AdjustTime(250)) ; Aller à gauche pendant 250ms
             Send("{q up}")
+            Sleep(75) ; Délai RDP augmenté
             sleep (200)
             Send("{z down}")
             Sleep(AdjustTime(1500)) ; Avancer tout droit pendant 1500ms
             Send("{z up}")
+            Sleep(75) ; Délai RDP augmenté
             sleep (200)
-            Send("{d down}{z down}")
+            Send("{d down}")
+            Sleep(75) ; Délai RDP augmenté
+            Send("{z down}")
             Sleep(AdjustTime(2000)) ; Aller à droite pendant 2000ms
-            Send("{d up}{z up}")
+            Send("{d up}")
+            Sleep(75) ; Délai RDP augmenté
+            Send("{z up}")
+            Sleep(75) ; Délai RDP augmenté
             sleep (200)
             Send("{s down}")
             Sleep(AdjustTime(1000)) ; Reculer pendant 1000ms
             Send("{s up}")
+            Sleep(75) ; Délai RDP augmenté
             sleep (200)
             Send("{q down}")
             Sleep(AdjustTime(500)) ; Aller à gauche pendant 500ms
             Send("{q up}")
+            Sleep(75) ; Délai RDP augmenté
             sleep (200)
             
         case 4:
@@ -2867,12 +2890,15 @@ NavigateToAnthillSlot(slotNumber) {
             Send("{q down}")
             Sleep(AdjustTime(400))
             Send("{q up}")
+            Sleep(75) ; Délai RDP augmenté
             Send("{d down}")
             Sleep(AdjustTime(200))
             Send("{d up}")
+            Sleep(75) ; Délai RDP augmenté
             Send("{z down}")
             Sleep(AdjustTime(500))
             Send("{z up}")
+            Sleep(75) ; Délai RDP augmenté
             
         case 5:
             ; Slot 5 - Chemin alternatif
@@ -2880,12 +2906,15 @@ NavigateToAnthillSlot(slotNumber) {
             Send("{d down}")
             Sleep(AdjustTime(300))
             Send("{d up}")
+            Sleep(75) ; Délai RDP augmenté
             Send("{q down}")
             Sleep(AdjustTime(300))
             Send("{q up}")
+            Sleep(75) ; Délai RDP augmenté
             Send("{z down}")
             Sleep(AdjustTime(400))
             Send("{z up}")
+            Sleep(75) ; Délai RDP augmenté
             
         default:
             ; Slot par défaut (1) - Chemin complet
@@ -2899,6 +2928,7 @@ NavigateToAnthillSlot(slotNumber) {
                 return
             }
             Send("{z up}")
+            Sleep(75) ; Délai RDP augmenté
             Send("{d down}")
             Sleep(AdjustTime(4500))
             if (!isRunning || !isMacroRunning) {
@@ -2906,14 +2936,17 @@ NavigateToAnthillSlot(slotNumber) {
                 return
             }
             Send("{d up}")
+            Sleep(75) ; Délai RDP augmenté
             
             ; Final diagonal movement
             UpdateStatus("Default slot - Final diagonal movement")
             Send("{q down}")
+            Sleep(75) ; Délai RDP augmenté
             Send("{z down}")
             Sleep(AdjustTime(500))
             Send("{q up}")
             Send("{z up}")
+            Sleep(75) ; Délai RDP augmenté
     }
     
     UpdateStatus("Arrived at Anthill Slot " . slotNumber)
@@ -2936,6 +2969,7 @@ FarmLoop() {
             Send("{Right down}")
             Sleep(50) ; Pression courte pour rotation progressive
             Send("{Right up}")
+            Sleep(75) ; Délai RDP augmenté
             Sleep(100) ; Pause entre chaque pression
         }
         
@@ -2945,6 +2979,7 @@ FarmLoop() {
     }
     
     ; Maintenir le clic gauche pour farmer en continu
+    Click(2917, 450) ; Position du clic gauche dans le champ
     Send("{LButton down}")
     Sleep(500) ; Petite pause pour s'assurer que le clic est bien activé
     
@@ -3024,11 +3059,11 @@ FarmLoop() {
         Send("{d down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
         Send("{z down}")
         Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
-        Sleep(AdjustTime(50)) ; Pause très courte entre les étapes
+        Sleep(AdjustTime(75)) ; Pause très courte entre les étapes
         patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
@@ -3039,11 +3074,11 @@ FarmLoop() {
         Send("{q down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
         Send("{z down}")
         Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
-        Sleep(AdjustTime(50)) ; Pause très courte entre les étapes
+        Sleep(AdjustTime(75)) ; Pause très courte entre les étapes
         patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
@@ -3054,10 +3089,11 @@ FarmLoop() {
         Send("{d down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
+        Sleep(75) ; Délai RDP augmenté
         Send("{z down}")
         Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
-        Sleep(AdjustTime(50)) ; Pause très courte
+        Sleep(AdjustTime(75)) ; Pause très courte
         patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
@@ -3068,10 +3104,11 @@ FarmLoop() {
         Send("{q down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
+        Sleep(75) ; Délai RDP augmenté
         Send("{z down}")
         Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
-        Sleep(AdjustTime(50)) ; Pause très courte
+        Sleep(AdjustTime(75)) ; Pause très courte
         patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
@@ -3082,10 +3119,11 @@ FarmLoop() {
         Send("{d down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
+        Sleep(75) ; Délai RDP augmenté
         Send("{z down}")
         Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
-        Sleep(AdjustTime(50)) ; Pause très courte
+        Sleep(AdjustTime(75)) ; Pause très courte
         patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
@@ -3096,10 +3134,11 @@ FarmLoop() {
         Send("{q down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
+        Sleep(75) ; Délai RDP augmenté
         Send("{z down}")
         Sleep(AdjustTime(200)) ; Distance vers l'avant réduite
         Send("{z up}")
-        Sleep(AdjustTime(50)) ; Pause très courte
+        Sleep(AdjustTime(75)) ; Pause très courte
         patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
@@ -3113,11 +3152,11 @@ FarmLoop() {
         Send("{d down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
         Send("{s down}")
         Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
-        Sleep(AdjustTime(50)) ; Pause très courte
+        Sleep(AdjustTime(75)) ; Pause très courte
         patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
@@ -3128,11 +3167,11 @@ FarmLoop() {
         Send("{q down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
         Send("{s down}")
         Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
-        Sleep(AdjustTime(50)) ; Pause très courte
+        Sleep(AdjustTime(75)) ; Pause très courte
         patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
@@ -3143,11 +3182,11 @@ FarmLoop() {
         Send("{d down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
         Send("{s down}")
         Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
-        Sleep(AdjustTime(50)) ; Pause très courte
+        Sleep(AdjustTime(75)) ; Pause très courte
         patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
@@ -3158,11 +3197,11 @@ FarmLoop() {
         Send("{q down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
         Send("{s down}")
         Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
-        Sleep(AdjustTime(50)) ; Pause très courte
+        Sleep(AdjustTime(75)) ; Pause très courte
         patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
@@ -3173,11 +3212,11 @@ FarmLoop() {
         Send("{d down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{d up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
         Send("{s down}")
         Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
-        Sleep(AdjustTime(50)) ; Pause très courte
+        Sleep(AdjustTime(75)) ; Pause très courte
         patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
@@ -3188,11 +3227,11 @@ FarmLoop() {
         Send("{q down}")
         Sleep(AdjustTime(800)) ; Distance latérale réduite
         Send("{q up}")
-        Sleep(50) ; Petit délai pour RDP
+        Sleep(75) ; Délai RDP augmenté
         Send("{s down}")
         Sleep(AdjustTime(200)) ; Distance vers l'arrière réduite
         Send("{s up}")
-        Sleep(AdjustTime(50)) ; Pause très courte
+        Sleep(AdjustTime(75)) ; Pause très courte
         patternCycleCount++
         if (!isRunning || !isMacroRunning) {
             break
@@ -3333,14 +3372,17 @@ ResetCharacter() {
     Send("{Escape down}")
     Sleep(200)
     Send("{Escape up}")
+    Sleep(75) ; Délai RDP augmenté
     
     Send("{r down}")
     Sleep(100)
     Send("{r up}")
+    Sleep(75) ; Délai RDP augmenté
     
     Send("{Enter down}")
     Sleep(100)
     Send("{Enter up}")
+    Sleep(75) ; Délai RDP augmenté
     
     Sleep(2000)
     if (!isRunning || !isMacroRunning) 
@@ -3359,14 +3401,17 @@ ResetCharacterForConversion() {
     Send("{Escape down}")
     Sleep(200)
     Send("{Escape up}")
+    Sleep(75) ; Délai RDP augmenté
     
     Send("{r down}")
     Sleep(100)
     Send("{r up}")
+    Sleep(75) ; Délai RDP augmenté
     
     Send("{Enter down}")
     Sleep(100)
     Send("{Enter up}")
+    Sleep(75) ; Délai RDP augmenté
     
     Sleep(2000)
     if (!isRunning || !isMacroRunning) 
@@ -3387,6 +3432,7 @@ ResetPosition() {
         return
     }
     Send("{s up}")
+    Sleep(75) ; Délai RDP augmenté
     
     global bagFull := false
     global bagEmpty := false
